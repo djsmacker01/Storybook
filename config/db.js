@@ -12,7 +12,7 @@ const connectDB = async () => {
 
     catch (err) { 
         console.error(err)
-        // process.exit(1)
+        process.exit(1)
     }
 }
 console.log(process.env.MONGO_URI,' checking for MongoDB')
