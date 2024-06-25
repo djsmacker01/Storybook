@@ -4,7 +4,7 @@ module.exports = {
             return next();
         }
         else {
-            res.ensureAuth('/')
+            res.redirect('/')
         }
     },
 
