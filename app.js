@@ -38,8 +38,10 @@ app.use(session({
   // cookie: {
   //   maxAge: 1000 * 60 * 60 * 24 // 1 day
   // }
-  store: new MongoStore({mongooseConnection:mongoose.connection})
-  // cookie: {secure:true}
+  // store: new MongoStore({mongooseConnection:mongoose.connection})
+  store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
+
+  cookie: {secure:true}
 }))
 
 //passport middleware
@@ -56,6 +58,7 @@ app.use('/auth', require('./routes/auth'));
 
 
 const PORT = process.env.PORT || 3000;
+
 
 app.listen(
   PORT,
