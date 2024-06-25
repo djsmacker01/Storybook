@@ -59,10 +59,19 @@ app.use('/auth', require('./routes/auth'));
 
 const PORT = process.env.PORT || 3000;
 
-
-app.listen(
-  PORT,
-  console.log(
-    `Server is listening on ${process.env.NODE_ENV} mode on port ${PORT}`
-  )
-);
+connectDB().catch(err => {
+  console.error(err);
+  process.exit(1);
+})
+// app.listen(
+//   PORT,
+//   console.log(
+//     `Server is listening on ${process.env.NODE_ENV} mode on port ${PORT}`
+//   )
+// );
+app.listen(PORT, () => {
+  console.log(`Server is listening on ${process.env.NODE_ENV} mode on port ${PORT}`);
+}).on('error', err => {
+  console.error('Failed to start server:', err);
+  process.exit(1);
+});
