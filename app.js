@@ -62,6 +62,7 @@ const PORT = process.env.PORT || 3000;
 connectDB().catch(err => {
   console.error(err);
   process.exit(1);
+  d
 })
 // app.listen(
 //   PORT,
