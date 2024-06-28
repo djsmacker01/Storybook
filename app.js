@@ -39,7 +39,7 @@ app.use(session({
   //   maxAge: 1000 * 60 * 60 * 24 // 1 day
   // }
   // store: new MongoStore({mongooseConnection:mongoose.connection})
-  store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
+  // store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
 
   cookie: {secure:true}
 }))
@@ -59,20 +59,20 @@ app.use('/auth', require('./routes/auth'));
 
 const PORT = process.env.PORT || 3000;
 
-connectDB().catch(err => {
-  console.error(err);
-  process.exit(1);
-  d
-})
-// app.listen(
-//   PORT,
-//   console.log(
-//     `Server is listening on ${process.env.NODE_ENV} mode on port ${PORT}`
-//   )
-// );
-app.listen(PORT, () => {
-  console.log(`Server is listening on ${process.env.NODE_ENV} mode on port ${PORT}`);
-}).on('error', err => {
-  console.error('Failed to start server:', err);
-  process.exit(1);
-});
+// connectDB().catch(err => {
+//   console.error(err);
+//   process.exit(1);
+  
+// })
+app.listen(
+  PORT,
+  console.log(
+    `Server is listening on ${process.env.NODE_ENV} mode on port ${PORT}`
+  )
+);
+// app.listen(PORT, () => {
+//   console.log(`Server is listening on ${process.env.NODE_ENV} mode on port ${PORT}`);
+// }).on('error', err => {
+//   console.error('Failed to start server:', err);
+//   process.exit(1);
+// });
